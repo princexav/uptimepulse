@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uptimepulse"
+version = "0.1.0"
+authors = [
+  { name="Kimberly Washington", email="hiokeke26@gmail.com" },
+]
+description = "A lightweight, developer-first API and service uptime monitoring engine with synthetic assertions and webhooks."
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+  "urllib3>=1.26.0",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+    "Topic :: System :: Monitoring",
+    "Topic :: Internet :: WWW/HTTP",
+]
+
+[project.scripts]
+uptimepulse = "uptimepulse.cli:main"
