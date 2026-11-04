@@ -1,0 +1,31 @@
+monitors:
+  - id: "httpbin-status"
+    name: "HTTPBin Health API"
+    type: "http"
+    target: "https://httpbin.org/status/200"
+    interval_seconds: 30
+    timeout_seconds: 5
+    assertions:
+      expected_status: 200
+      max_latency_ms: 2000
+
+  - id: "google-dns"
+    name: "Google Public DNS TCP"
+    type: "tcp"
+    target: "8.8.8.8:53"
+    interval_seconds: 60
+    timeout_seconds: 3
+
+  - id: "github-ssl"
+    name: "GitHub TLS Certificate Audit"
+    type: "ssl"
+    target: "github.com"
+    interval_seconds: 3600
+    assertions:
+      min_days_remaining: 14
+
+alerts:
+  webhooks:
+    - name: "team-alerts"
+      url: "https://httpbin.org/post"
+      events: ["down", "recovered"]
